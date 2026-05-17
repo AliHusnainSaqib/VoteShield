@@ -1,0 +1,115 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Islamabad Zone 1",
+        "population": 1200000,
+        "efficiency_gap": 1.2,
+        "status": "Fair"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [72.95, 33.65],
+            [73.15, 33.65],
+            [73.15, 33.75],
+            [72.95, 33.75],
+            [72.95, 33.65]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Islamabad Zone 2",
+        "population": 800000,
+        "efficiency_gap": 2.1,
+        "status": "Fair"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [73.15, 33.65],
+            [73.30, 33.65],
+            [73.30, 33.75],
+            [73.15, 33.75],
+            [73.15, 33.65]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Rawalpindi Cantt",
+        "population": 1500000,
+        "efficiency_gap": 5.4,
+        "status": "Warning"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [72.90, 33.55],
+            [73.05, 33.55],
+            [73.05, 33.65],
+            [72.90, 33.65],
+            [72.90, 33.55]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Rawalpindi City",
+        "population": 1100000,
+        "efficiency_gap": 8.1,
+        "status": "Biased"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [73.05, 33.55],
+            [73.15, 33.55],
+            [73.15, 33.65],
+            [73.05, 33.65],
+            [73.05, 33.55]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Gujar Khan (Rawalpindi)",
+        "population": 600000,
+        "efficiency_gap": 0.8,
+        "status": "Fair"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [73.15, 33.20],
+            [73.40, 33.20],
+            [73.40, 33.55],
+            [73.15, 33.55],
+            [73.15, 33.20]
+          ]
+        ]
+      }
+    }
+  ]
+}

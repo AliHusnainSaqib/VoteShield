@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    container_name: voteshield-db
+    environment:
+      POSTGRES_USER: voteshield_user
+      POSTGRES_PASSWORD: secure_password_123
+      POSTGRES_DB: voteshield_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    container_name: voteshield-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://voteshield_user:secure_password_123@db:5432/voteshield_db
+    depends_on:
+      - db
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app
+
+volumes:
+  postgres_data:
