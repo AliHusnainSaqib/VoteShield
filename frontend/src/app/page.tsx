@@ -240,6 +240,22 @@ export default function Home() {
     mouseRef.current.targetY = -(y / rect.height) * visibleHeight + (visibleHeight / 2);
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLElement>) => {
+    if (!containerRef.current) return;
+    const touch = e.touches[0];
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    
+    const aspect = rect.width / rect.height;
+    const vFov = 45 * Math.PI / 180;
+    const visibleHeight = 2 * Math.tan(vFov / 2) * 100;
+    const visibleWidth = visibleHeight * aspect;
+
+    mouseRef.current.targetX = (x / rect.width) * visibleWidth - (visibleWidth / 2);
+    mouseRef.current.targetY = -(y / rect.height) * visibleHeight + (visibleHeight / 2);
+  };
+
   return (
     <div className="flex-1 flex flex-col relative overflow-hidden bg-[#f9f8f3]">
 
@@ -250,6 +266,9 @@ export default function Home() {
         onMouseEnter={() => { setIsHovered(true); mouseRef.current.active = true; }}
         onMouseLeave={() => { setIsHovered(false); mouseRef.current.active = false; }}
         onMouseMove={handleMouseMove}
+        onTouchStart={(e) => { setIsHovered(true); mouseRef.current.active = true; handleTouchMove(e); }}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={() => { setIsHovered(false); mouseRef.current.active = false; }}
       >
         {/* Layer 1: Core Rendering WebGL Canvas */}
         <canvas
@@ -263,14 +282,14 @@ export default function Home() {
 
         {/* Foreground Content Sizing Protection */}
         <div className="relative z-20 flex flex-col items-center w-full">
-          <h1 className="text-5xl md:text-7xl font-extrabold font-serif text-slate-900 tracking-tight mb-8 max-w-5xl">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl text-center font-bold font-serif text-slate-900 tracking-tight mb-8 max-w-5xl">
             VoteShield: Streamline Democratic Integrity
           </h1>
           <p className="text-xl text-slate-700 mb-12 max-w-3xl leading-relaxed font-sans">
             An AI-powered Digital Voting and Electoral District System. We ensure transparent, fair, and secure elections using advanced spatial analytics and cryptographic verification.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/vote">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -302,7 +321,7 @@ export default function Home() {
           backgroundBlendMode: 'normal'
         }}
       >
-        <div className="w-full overflow-x-auto flex flex-row gap-6 py-6 px-6 scrollbar-thin snap-x snap-mandatory">
+        <div className="w-full overflow-x-auto flex flex-row gap-6 py-6 px-4 scrollbar-hide snap-x snap-mandatory overscroll-x-contain">
           
           {[
             { img: "/monuments/faisal.png", label: "Faisal Mosque (Islamabad)" },
@@ -311,7 +330,7 @@ export default function Home() {
             { img: "/monuments/quaid.png", label: "Quaid's Mausoleum (Karachi)" },
             { img: "/monuments/badshahi.png", label: "Badshahi Mosque (Lahore)" },
           ].map((monument, i) => (
-            <div key={i} className="flex-shrink-0 w-[320px] snap-start bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 group cursor-pointer flex flex-col items-center">
+            <div key={i} className="flex-shrink-0 w-[260px] sm:w-[320px] snap-start bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 group cursor-pointer flex flex-col items-center">
               <motion.div 
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="w-full overflow-hidden relative shadow-lg rounded-xl mb-4"
@@ -349,7 +368,7 @@ export default function Home() {
 
       {/* 4. Institutional Capabilities Grid */}
       <section className="w-full max-w-5xl mx-auto px-6 md:px-12 pb-24 z-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
           
           {/* Grid Span 1 Left: Interactive GIS Mapping */}
           <div className="col-span-1 bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl p-8 shadow-sm flex flex-col relative overflow-hidden group">

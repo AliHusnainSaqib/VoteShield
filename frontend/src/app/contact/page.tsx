@@ -17,7 +17,7 @@ export default function ContactPage() {
       }}></div>
 
       <div className="w-full max-w-6xl px-6 py-12 md:px-12 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="flex flex-col lg:flex-row gap-10 items-center justify-between">
           
           {/* Left Column: Text Content */}
           <div className="flex flex-col text-white">
@@ -66,7 +66,7 @@ export default function ContactPage() {
                   type="text" 
                   id="name" 
                   required
-                  className="w-full bg-white text-slate-900 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#10b981] transition-all"
+                  className="w-full min-h-[48px] bg-white text-slate-900 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#10b981] transition-all"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -77,7 +77,7 @@ export default function ContactPage() {
                   type="email" 
                   id="email" 
                   required
-                  className="w-full bg-white text-slate-900 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#10b981] transition-all"
+                  className="w-full min-h-[48px] bg-white text-slate-900 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#10b981] transition-all"
                   placeholder="name@example.com"
                 />
               </div>
@@ -88,14 +88,14 @@ export default function ContactPage() {
                   id="message" 
                   required
                   rows={4}
-                  className="w-full bg-white text-slate-900 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#10b981] transition-all resize-none"
+                  className="w-full min-h-[48px] bg-white text-slate-900 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#10b981] transition-all resize-none"
                   placeholder="How can we help you today?"
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
-                className="bg-[#10b981] hover:bg-[#059669] text-white font-medium py-3 px-6 rounded-full flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl mt-2"
+                className="bg-[#10b981] hover:bg-[#059669] text-white font-medium py-3 px-6 min-h-[48px] rounded-full flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl mt-2"
               >
                 Send Message <Send className="w-4 h-4" />
               </button>
